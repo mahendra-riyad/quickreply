@@ -1,0 +1,55 @@
+<form class="example-form" [formGroup]="propertyForm" (ngSubmit)="onSubmit()">
+    <div class="property-form-button">
+        <span>Add Property</span>
+    </div>
+    <mat-form-field class="property-form-field" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input type="text" matInput formControlName="name" placeholder="Enter property name">
+
+        <mat-error *ngIf="propertyForm.get('name').hasError('required')">
+            Please enter a valid name
+        </mat-error>
+        <mat-error *ngIf="propertyForm.get('name').hasError('minlength')">
+            minlength must be 3 for property name
+        </mat-error>
+
+        <mat-error *ngIf="propertyForm.get('name').hasError('maxlength')">
+            max length must be less than 30 for property name
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="property-form-field">
+        <mat-label>Description</mat-label>
+        <textarea matInput maxlength="256" placeholder="write something about property..." formControlName="description"></textarea>
+        <mat-hint align="end">{{propertyForm.value?.description.length}} / 256</mat-hint>
+
+        <mat-error *ngIf="propertyForm.get('description').hasError('required')">
+            Please write something about property
+        </mat-error>
+        <mat-error *ngIf="propertyForm.get('description').hasError('minlength')">
+            min length must be 10 for description
+        </mat-error>
+
+        <mat-error *ngIf="propertyForm.get('description').hasError('maxlength')">
+            max length must be less than 256 for description
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="property-form-field">
+        <mat-label>Size</mat-label>
+        <input type="number" min="1" matInput formControlName="size" placeholder="size">
+
+        <mat-error *ngIf="propertyForm.get('size').hasError('required')">
+            Please enter size
+        </mat-error>
+        <mat-error *ngIf="propertyForm.get('size').hasError('min')">
+            Please enter minimum size 1
+        </mat-error>
+    </mat-form-field>
+
+
+    <div class="property-form-button">
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+    </div>
+    <!-- [disabled]="!propertyForm.valid" -->
+</form>

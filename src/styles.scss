@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Helvetica Neue", sans-serif !important;
+  background: blueviolet;
+}
+
+.mat-paginator-outer-container {
+  bottom: 0px;
+  position: fixed;
+  background-color: blueviolet;
+  width: 100%;
+  border-top: 3px solid #9401a0;
+}
+
+.cstm_add_property_popup {
+  .mat-dialog-container{
+    background-color: #6e2aad;
+  }
+}
+
+.mat-elevation-z8 {
+  box-shadow: none !important;
+}
