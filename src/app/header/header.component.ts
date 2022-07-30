@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
       panelClass: "cstm_add_property_popup",
     }).afterClosed().subscribe(res => {
       if (res) {
-        this.newPropertyEvent.emit(res);
+        this.newPropertyEvent.emit();
       }
     })
   }

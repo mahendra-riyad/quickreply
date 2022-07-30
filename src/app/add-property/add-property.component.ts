@@ -6,6 +6,8 @@ import {
 } from '@angular/material/dialog';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { AppService } from '../service/app.service'
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-property',
@@ -13,10 +15,13 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./add-property.component.scss'],
 })
 export class AddPropertyComponent implements OnInit {
+  durationInSeconds = 5;
   constructor(
     public dialogRef: MatDialogRef<AddPropertyComponent>,
     @Inject(MAT_DIALOG_DATA) private data: any,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private appService: AppService,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {}
@@ -34,8 +39,9 @@ export class AddPropertyComponent implements OnInit {
       return;
     }
 
-    this.dialogRef.close(this.propertyForm.value)
-
-    // console.log(this.propertyForm.value);
+    this.appService.addProperty(this.propertyForm.value).subscribe((res: any) => {
+      this._snackBar.open(res.message, "X");
+      this.dialogRef.close(true)
+    })
   }
 }

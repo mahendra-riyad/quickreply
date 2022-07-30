@@ -12,7 +12,8 @@ import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/materia
 import { HeaderComponent } from './header/header.component';
 import { AddPropertyModule } from './add-property/add-property.module';
 import { MatButtonModule } from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -26,7 +27,8 @@ import {MatIconModule} from '@angular/material/icon';
     AddPropertyModule,
     CommonModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule
   ],
   bootstrap: [AppComponent],
 })
